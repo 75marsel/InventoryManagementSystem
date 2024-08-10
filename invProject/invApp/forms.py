@@ -1,7 +1,7 @@
 from django import forms
 from .models import Product
 
-class ProductForm(forms.Form):
+class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = "__all__"
@@ -13,7 +13,7 @@ class ProductForm(forms.Form):
             "quantity": "Quantity",
             "supplier": "Supplier",  
         }
-        widhets ={
+        widgets ={
             "product_id": forms.NumberInput(
                 attrs={
                     "placeholder": "e.g 1",
