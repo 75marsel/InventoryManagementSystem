@@ -1,6 +1,9 @@
 from django.urls import path
 from . import views
 
+#namespace
+app_name = "invApp"
+
 urlpatterns = [
     path("", views.home_view, name="home"),
     path("create/", views.product_create_view, name="product_create"),

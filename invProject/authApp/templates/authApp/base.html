@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}IMS APP{% endblock title %}</title>
+    <title>{% block title %}IMS UAM{% endblock title %}</title>
     {% comment "" %}https://www.jsdelivr.com/package/npm/bootstrap{% endcomment %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" 
     rel="stylesheet">
@@ -27,31 +27,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <a href="{% url 'invApp:home' %}" class="navbar-brand">Inventory Management System</a>
-        <button 
-            class="navbar-toggler" 
-            type="button" 
-            data-toggle="collapse" 
-            data-target="#navbarNav" 
-            aria-controls="navbarNav" 
-            aria-expanded="false" 
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="{% url 'invApp:product_create' %}" class="nav-link">
-                        Add Product
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'invApp:product_list' %}" class="nav-link">
-                        Show Products
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <a href="{% url 'authApp:dashboard' %}" class="navbar-brand">Inventory Management System</a>
     </nav>
     <div class="container">
         {% block content %}

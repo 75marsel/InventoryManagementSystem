@@ -1,7 +1,8 @@
-# Inventory Management System using Django Web Framework
+# Inventory Management System using Django Web Framework with User Auth
 
-A Practice app for developing websites and application.
-This is a preparation for ReactJS + Django project of mine.
+A Simple Django-based Inventory Management System (IMS) with User Authentication using Django's built-in libraries.
+
+This might get iterative updates for practicing Django.
 
 
 ## Libraries used:

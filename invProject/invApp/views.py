@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import View
 from .forms import ProductForm
 from .models import Product
 
 # CRUD = Create, Read, Update, Delete
 
 # Home view
+@login_required
 def home_view(request):
     return render(
         request, 
@@ -12,13 +16,14 @@ def home_view(request):
         )
     
 # Create View
+@login_required
 def product_create_view(request):
     form = ProductForm()
     if request.method == "POST":
         form = ProductForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("product_list")
+            return redirect("invApp:product_list")
     
     context = {
         "form": form,
@@ -31,6 +36,7 @@ def product_create_view(request):
         )
     
 # Read View
+@login_required
 def product_list_view(request):
     products = Product.objects.all()
     return render(
@@ -40,6 +46,7 @@ def product_list_view(request):
     )
     
 # Update View
+@login_required
 def product_update_view(request, product_id):
     product = Product.objects.get(product_id=product_id)
     form = ProductForm(instance=product)
@@ -47,7 +54,7 @@ def product_update_view(request, product_id):
         form = ProductForm(request.POST, instance=product)
         if form.is_valid():
             form.save()
-            return redirect("product_list")
+            return redirect("invApp:product_list")
     
     context = {
         "form": form,
@@ -60,11 +67,12 @@ def product_update_view(request, product_id):
         )
 
 # Delete View
+@login_required
 def product_delete_view(request, product_id):
     product = Product.objects.get(product_id=product_id)
     if request.method == "POST":
         product.delete()
-        return redirect("product_list")
+        return redirect("invApp:product_list")
     
     context = {
         "product": product,

@@ -1,0 +1,15 @@
+{% extends "authApp/base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Home</h2>
+    <p>Welcome, {{request.user.username}}</p>
+    <a href="{% url 'authApp:protected' %}">Go to your FYP!</a>
+    <form action="{% url 'authApp:logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+</div>
+{% endblock content %}

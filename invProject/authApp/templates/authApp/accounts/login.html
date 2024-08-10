@@ -1,0 +1,20 @@
+{% extends "authApp/base.html" %}
+
+{% block title %} Login {% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h2>Login</h2>
+        <form action="{% url 'authApp:login'%}" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-success btn-block" type="submit">Login</button>
+        </form>
+        {% if error %}
+            <p class="error">{{error}}</p>
+        {% endif %}
+        <p>
+            Don't Have an Account? <a href="{% url 'authApp:register' %}">Register Here</a>
+        </p>
+    </div>
+{% endblock content %}
