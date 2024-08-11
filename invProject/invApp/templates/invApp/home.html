@@ -4,13 +4,14 @@
 
 {% block content %}
     <div class="jumbotron text-center">
-        <hi class="display-4">Welcome to the Inventory Management System</hi>
-        <p class="lead">Manage your products efficiently and effectively</p>
+        <hi class="display-4">Inventory Management System (IMS)</hi>
+        <p class="lead">Manage your products efficiently with digital technology</p>
         <hr class="my-4">
         <p>
-            Use the navigation bar to add, view, update or delete products.
+            To start, use the navigation bar and access the specific functions that cater
+            to your specific needs.
         </p>
         <a href="{% url 'invApp:product_list' %}" class="btn btn-primary btn-lg" role="button">View Products</a>
-        <a href="{% url 'authApp:dashboard' %}" class="btn btn-primary btn-lg" role="button">Dashboard</a>
+        <a href="{% url 'authApp:dashboard' %}" class="btn btn-primary btn-lg" role="button">Return to Dashboard</a>
     </div>
 {% endblock content %}

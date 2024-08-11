@@ -1,18 +1,22 @@
 {% extends "authApp/base.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block title %} Login {% endblock title %}
 
 {% block content %}
-    <div class="container">
+    <div class="container jumbotron">
         <h2>Login</h2>
         <form action="{% url 'authApp:login'%}" method="post">
             {% csrf_token %}
-            {{form.as_p}}
+            {{form|crispy}}
             <button class="btn btn-success btn-block" type="submit">Login</button>
         </form>
+        {% comment "" %}
         {% if error %}
             <p class="error">{{error}}</p>
         {% endif %}
+        {% endcomment %}
         <p>
             Don't Have an Account? <a href="{% url 'authApp:register' %}">Register Here</a>
         </p>

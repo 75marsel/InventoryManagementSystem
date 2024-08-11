@@ -1,12 +1,14 @@
 {% extends "invApp/base.html" %}
 
+{% load crispy_form_tags %}
+
 {% block title %} Product Form {% endblock title %}
 
 {% block content %}
     <h1 class="text-center">Product Form</h1>
     <form method="POST" class="jumbotron">
         {% csrf_token %}
-        {{form}}
+        {{form|crispy}}
         <button class="btn btn-success btn-block" type="submit">Save Product</button>
     </form>
 {% endblock content %}

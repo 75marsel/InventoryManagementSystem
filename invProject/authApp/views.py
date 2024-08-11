@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.contrib import messages
 from django.views import View
 from .forms import RegisterForm, LoginForm
 
@@ -19,6 +20,8 @@ def register_view(request):
             )
             login(request, user)
             return redirect("authApp:dashboard")
+        else:
+            messages.error(request, "Invalid Input, please input valid data!")
     else:
         form = RegisterForm()
     
@@ -51,13 +54,15 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 next_url = request.POST.get("next") or request.GET.get("next") or "authApp:dashboard"
+
                 return redirect(next_url)
             else:
-                error_message = "Invalid Credentials"
+                messages.error(request, "Invalid Credentials")
+                #error_message = "Invalid Credentials"
     else:
         form = LoginForm()
     context = {
-        "error": error_message,
+        #"error": error_message,
         "form": form,
     }
     

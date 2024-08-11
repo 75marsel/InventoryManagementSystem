@@ -1,14 +1,17 @@
 {% extends "authApp/base.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}
 Register
 {% endblock title %}
 
 {% block content %}
-<div class="container">
+<div class="container jumbotron">
+    <h2>Register</h2>
     <form action="{% url 'authApp:register' %}" method="post">
         {% csrf_token %}
-        {{form.as_p}}
+        {{form|crispy}}
         <button type="submit" class="btn btn-success">Register</button>
     </form>
 </div>
