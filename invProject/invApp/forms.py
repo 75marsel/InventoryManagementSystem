@@ -7,11 +7,13 @@ class ProductForm(forms.ModelForm):
         fields = "__all__"
         labels = {
             "product_id": "Product ID",
-            "name": "Name",
-            "sku": "SKU",
+            "product_name": "Product Name",
+            "serial_number": "Serial Number",
             "price": "Price",
             "quantity": "Quantity",
             "supplier": "Supplier",  
+            "delivered_date": "Delivered Date",
+            "product_image": "Product Image",
         }
         widgets ={
             "product_id": forms.NumberInput(
@@ -19,12 +21,12 @@ class ProductForm(forms.ModelForm):
                     "placeholder": "e.g 1",
                     "class": "form-control",
                 }),
-            "name": forms.TextInput(
+            "product_name": forms.TextInput(
                 attrs={
                     "placeholder": "Shirt",
                     "class": "form-control",
                 }),
-            "sku": forms.TextInput(
+            "serial_number": forms.TextInput(
                 attrs={
                     "placeholder": "Serial Number",
                     "class": "form-control",
@@ -44,4 +46,15 @@ class ProductForm(forms.ModelForm):
                     "placeholder": "ABC Company",
                     "class": "form-control",
                 }),
+            "delivered_date": forms.DateTimeInput(
+                attrs={
+                    "placeholder": "Delivered Date",
+                    "class": "form-control",
+                    "type": "datetime-local",
+            }),
+            'product_image': forms.ClearableFileInput(
+                attrs={
+                "class": "form-control",
+                'accept': 'image/*'
+            }),
         }

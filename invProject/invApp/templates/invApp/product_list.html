@@ -3,16 +3,55 @@
 {% block title %} Product List {% endblock title %}
 
 {% block content  %}
-    <h1 class="text-center">Products</h1>
+    <h1 class="text-center">Products</h1><br>
+    <div>
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <div class="btn-group" role="group">
+              <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sort
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href="#">Dropdown link</a>
+                <a class="dropdown-item" href="#">Dropdown link</a>
+              </div>
+            </div>
+          </div>
+          <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <div class="btn-group" role="group">
+              <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href="#">Dropdown link</a>
+                <a class="dropdown-item" href="#">Dropdown link</a>
+              </div>
+            </div>
+          </div>
+          
+          <form id="form_search" name="form_search" method="get" action="" class="form-inline">
+            <div class="form-group">
+              <div class="input-group">
+               <input class="form-control" placeholder="Search for..." type="text">
+               <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">Search</button>
+               </span>
+             </div>
+           </div>
+         </form>
+          
+    </div>
+    <br>
     <table class="table table-bordered table-striped text-center">
         <thead class="thead-dark">
             <tr>
                 <th>Product ID</th>
-                <th>Name</th>
-                <th>SKU</th>
+                <th>Product Name</th>
+                <th>Serial Number</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Supplier</th>
+                <th>Delivered Date</th>
+                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,11 +59,15 @@
             {% for product in products %}
             <tr>
                 <td>{{ product.product_id }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.sku }}</td>
+                <td>{{ product.product_name }}</td>
+                <td>{{ product.serial_number }}</td>
                 <td>{{ product.price }}</td>
                 <td>{{ product.quantity }}</td>
                 <td>{{ product.supplier }}</td>
+                <td>{{ product.delivered_date }}</td>
+                <td>
+                    <img src="{{ product.product_image.url }}" style="width:200px;">     
+                </td>
                 <td>
                     <a href="{% url 'invApp:product_update' product.product_id%}" 
                     class="btn btn-success">Update</a>

@@ -20,7 +20,7 @@ def home_view(request):
 def product_create_view(request):
     form = ProductForm()
     if request.method == "POST":
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect("invApp:product_list")
@@ -51,7 +51,7 @@ def product_update_view(request, product_id):
     product = Product.objects.get(product_id=product_id)
     form = ProductForm(instance=product)
     if request.method == "POST":
-        form = ProductForm(request.POST, instance=product)
+        form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
             return redirect("invApp:product_list")
